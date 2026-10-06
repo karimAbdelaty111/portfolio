@@ -18,6 +18,13 @@ export interface Project {
   image: string;
   placeholderBadge?: string;
   realGalleryImages?: string[];
+  galleryImages?: string[];
+  projectGoal?: string;
+  role?: string;
+  projectType?: string;
+  platform?: string;
+  stateManagement?: string;
+  apis?: string;
   featured: boolean;
 }
 

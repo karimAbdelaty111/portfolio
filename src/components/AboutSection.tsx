@@ -3,24 +3,18 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import {
-  GraduationCap,
-  MapPin,
-  Mail,
-  Phone,
-  CheckCircle,
+  Sparkles,
   Code2,
-  Cpu,
+  User,
+  Briefcase,
+  MapPin,
+  Landmark,
+  GraduationCap,
   Layers,
-  ShieldCheck,
-  Compass,
   Copy,
   Check,
-  ExternalLink,
-  Sparkles,
-  FolderGit2,
-  Database,
-  Smartphone,
-  Share2,
+  Mail,
+  Phone,
 } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import { personalInfo } from '@/data/portfolioData';
@@ -35,74 +29,36 @@ export default function AboutSection() {
     setTimeout(() => setCopiedEmail(false), 2000);
   };
 
-  const profileSpecs = [
+  const profileOverview = [
     {
       label: 'Full Name',
-      value: personalInfo.name,
-      icon: Code2,
+      value: 'Karim Mohamed Abdelaty',
+      icon: User,
     },
     {
-      label: 'Professional Role',
-      value: personalInfo.title,
-      icon: Cpu,
+      label: 'Role',
+      value: 'Flutter Developer | Computer Science Student',
+      icon: Briefcase,
     },
     {
-      label: 'University & Faculty',
-      value: `${personalInfo.university} — ${personalInfo.faculty}`,
-      icon: GraduationCap,
-    },
-    {
-      label: 'Academic Standing',
-      value: `${personalInfo.academicStatus} (${personalInfo.department})`,
-      icon: Layers,
-    },
-    {
-      label: 'Key Experience',
-      value: 'DEPI Round 5 Scholar & Flutter Projects',
-      icon: FolderGit2,
-    },
-    {
-      label: 'Current Location',
-      value: personalInfo.location,
+      label: 'Location',
+      value: 'Cairo, Egypt',
       icon: MapPin,
     },
     {
-      label: 'Direct Email',
-      value: personalInfo.email,
-      icon: Mail,
-      isLink: true,
-      href: `mailto:${personalInfo.email}`,
-    },
-  ];
-
-  const engineeringPillars = [
-    {
-      title: 'Clean Architecture Decoupling',
-      desc: 'Separation of concerns across presentation, domain, and data layers with BLoC/Cubit and SOLID principles.',
-      icon: ShieldCheck,
-      color: 'text-cyan-400 bg-cyan-950/50 border-cyan-500/30',
-      tags: ['BLoC', 'Cubit', 'SOLID', 'Repository Pattern'],
+      label: 'University',
+      value: 'Ain Shams University – Faculty of Science',
+      icon: Landmark,
     },
     {
-      title: 'Algorithmic Core & BFS Routing',
-      desc: 'Graph modeling and Breadth-First Search (BFS) route optimization in Cairo Metro App for transfer detection.',
-      icon: Compass,
-      color: 'text-emerald-400 bg-emerald-950/50 border-emerald-500/30',
-      tags: ['Graph Theory', 'BFS Traversal', 'Shortest Route', 'Time Estimates'],
+      label: 'Education',
+      value: 'B.Sc. Computer Science | Grade: 3.2 (Very Good)',
+      icon: GraduationCap,
     },
     {
-      title: 'Offline-First & REST APIs',
-      desc: 'Resilient networking with Dio interceptors, error boundaries, and local caching with SQLite & SharedPreferences.',
-      icon: Database,
-      color: 'text-teal-400 bg-teal-950/50 border-teal-500/30',
-      tags: ['Dio Interceptors', 'RESTful APIs', 'SQLite', 'Local Persistence'],
-    },
-    {
-      title: 'Fluid UI & Responsive Layouts',
-      desc: 'Platform-adaptive interfaces following Material 3 & iOS guidelines with responsive widgets and smooth frame rates.',
-      icon: Smartphone,
-      color: 'text-sky-400 bg-sky-950/50 border-sky-500/30',
-      tags: ['Material 3', 'Maps & Geolocation', 'State Streams', 'Animations'],
+      label: 'Main Focus',
+      value: 'Flutter | Dart | REST APIs | BLoC / Cubit',
+      icon: Layers,
     },
   ];
 
@@ -115,181 +71,93 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <SectionHeader
           badge="ABOUT ME"
-          title="Background & Engineering Philosophy"
-          subtitle="A dedicated computer science student crafting cross-platform mobile experiences with a strong engineering core."
+          title="Background & Overview"
+          subtitle="A focused look at my academic foundation, engineering mindset, and mobile development focus."
         />
 
-        {/* =========================================================================
-            TWO-COLUMN MAIN ABOUT LAYOUT (MATCHING SHIMAA'S HIGH-END STRUCTURE)
-           ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-          {/* ---------------------------------------------------------------------
-              LEFT COLUMN (7 cols): NARRATIVE & ENGINEERING PHILOSOPHY
-             --------------------------------------------------------------------- */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-            <div className="bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 rounded-3xl p-6 sm:p-8 backdrop-blur-md relative overflow-hidden flex-1 shadow-xl">
+        {/* 2-Column Main Layout: 55% Left (2 Cards), 45% Right (Large Photo) */}
+        <div className="grid grid-cols-1 lg:grid-cols-11 gap-6 lg:gap-8 items-stretch">
+          {/* =========================================================================
+              LEFT COLUMN (Approx 55% on desktop: 6 of 11 cols): 2 VERTICAL CARDS
+             ========================================================================= */}
+          <div className="lg:col-span-6 flex flex-col gap-6 justify-between">
+            {/* CARD 1: ABOUT / PROFESSIONAL PHILOSOPHY */}
+            <div className="bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 rounded-[28px] p-6 sm:p-7 backdrop-blur-md shadow-xl relative overflow-hidden flex flex-col justify-between">
               {/* Corner Ambient Glow */}
-              <div className="absolute -top-12 -right-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -top-12 -right-12 w-36 h-36 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
 
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-800/80 flex items-center justify-center text-cyan-400">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-cyan-400">
-                    Who I Am
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                    Karim Mohamed Abdelaty
-                  </h3>
-                </div>
-              </div>
-
-              {/* Professional Narrative */}
-              <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
-                <p>
-                  I am a Computer Science student at{' '}
-                  <strong className="text-white font-semibold">Ain Shams University</strong>{' '}
-                  and an aspiring Software Engineer specializing in{' '}
-                  <strong className="text-cyan-400 font-semibold">Flutter development</strong>.
-                  I focus on building cross-platform mobile applications that solve tangible,
-                  real-world problems and provide clean, intuitive user experiences.
-                </p>
-
-                <p>
-                  My development journey is anchored in{' '}
-                  <strong className="text-slate-100">
-                    Dart, Flutter, RESTful APIs, reactive state management (BLoC, Cubit, Provider),
-                    and clean software architecture
-                  </strong>
-                  . I have applied these principles across production-quality applications including
-                  the <span className="text-cyan-300">Cairo Metro Navigation App</span>, the{' '}
-                  <span className="text-cyan-300">OnFood ordering platform</span>, and the{' '}
-                  <span className="text-cyan-300">San3a technician marketplace</span>.
-                </p>
-
-                {/* Engineering Philosophy Quote Box */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-cyan-950/25 border-l-4 border-cyan-400 border-y border-r border-cyan-900/40 my-4 text-slate-200">
-                  <p className="text-xs sm:text-sm italic leading-relaxed">
-                    &ldquo;I believe reliable mobile applications emerge at the intersection of
-                    rigorous computer science fundamentals, modular decoupled architecture, and
-                    empathetic human-centric design. Every line of Dart code should be maintainable,
-                    testable, and purpose-driven.&rdquo;
-                  </p>
-                  <div className="mt-2 text-right">
-                    <span className="text-xs font-semibold text-cyan-400">— Engineering Philosophy</span>
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-9 h-9 rounded-xl bg-cyan-950/80 border border-cyan-800/80 flex items-center justify-center text-cyan-400">
+                    <Sparkles className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-cyan-400 block font-semibold">
+                      Who I Am
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                      Professional Philosophy
+                    </h3>
                   </div>
                 </div>
 
-                <p>
-                  As a <strong className="text-emerald-400">DEPI Round 5 Scholar</strong>, I combine
-                  academic rigor with hands-on development discipline, continuous learning, and
-                  modern version-control collaboration.
+                {/* Natural, concise introduction */}
+                <p className="text-slate-300 text-sm sm:text-[15px] leading-relaxed">
+                  Computer Science student at{' '}
+                  <strong className="text-white font-semibold">Ain Shams University</strong>{' '}
+                  and Flutter Developer focused on building clean, responsive, and user-friendly mobile applications.
+                  I enjoy turning real-world problems into practical digital solutions using modern Flutter development practices, clean architecture, REST APIs, and reactive state management.
                 </p>
               </div>
 
-              {/* Verified Highlights Strip */}
-              <div className="mt-6 pt-6 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
-                <div className="flex items-center gap-2 text-slate-200">
-                  <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Cross-Platform Flutter & Dart</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-200">
-                  <CheckCircle className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span>Ain Shams Faculty of CS</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-200">
-                  <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>DEPI Round 5 Scholar</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-200">
-                  <CheckCircle className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span>Graph Algorithms & Clean Architecture</span>
+              {/* Compact highlighted quote/philosophy */}
+              <div className="mt-4 p-3.5 sm:p-4 rounded-2xl bg-cyan-950/25 border-l-4 border-cyan-400 border-y border-r border-cyan-900/40 text-slate-200">
+                <p className="text-xs sm:text-sm italic leading-relaxed text-slate-300">
+                  &ldquo;I believe reliable mobile apps emerge from clean architecture, thoughtful state management, and intuitive user experiences.&rdquo;
+                </p>
+                <div className="mt-1.5 text-right">
+                  <span className="text-[11px] font-semibold text-cyan-400">— Engineering Philosophy</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* ---------------------------------------------------------------------
-              RIGHT COLUMN (5 cols): PERSONAL & ACADEMIC PROFILE CARD
-             --------------------------------------------------------------------- */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
-            <div className="bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 rounded-3xl p-6 sm:p-7 backdrop-blur-md relative overflow-hidden shadow-xl flex-1 flex flex-col justify-between">
-              {/* Profile Card Header with Karim's Photo */}
+            {/* CARD 2: QUICK PROFILE OVERVIEW */}
+            <div className="bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 rounded-[28px] p-6 sm:p-7 backdrop-blur-md shadow-xl relative overflow-hidden flex flex-col justify-between">
+              {/* Corner Ambient Glow */}
+              <div className="absolute -bottom-12 -left-12 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+
               <div>
-                <div className="flex items-center justify-between pb-5 mb-5 border-b border-slate-800">
-                  <div className="flex items-center gap-3.5">
-                    {/* Karim Profile Photo Avatar */}
-                    <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-md shadow-cyan-500/20 shrink-0">
-                      <Image
-                        src="/assets/myphoto.jpeg"
-                        alt="Karim Mohamed Abdelaty Profile"
-                        fill
-                        className="object-cover object-top"
-                        sizes="56px"
-                        priority
-                      />
-                    </div>
-                    <div>
-                      <h4 className="text-base font-bold text-white leading-tight">
-                        {personalInfo.name}
-                      </h4>
-                      <p className="text-xs text-cyan-400 font-mono mt-0.5">
-                        Software Engineer &bull; Flutter
-                      </p>
-                    </div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-9 h-9 rounded-xl bg-cyan-950/80 border border-cyan-800/80 flex items-center justify-center text-cyan-400">
+                    <Code2 className="w-4 h-4" />
                   </div>
-
-                  {/* Pulsing Status Badge */}
-                  <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-950/70 text-emerald-400 border border-emerald-800/80">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Available
-                  </span>
+                  <div>
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-cyan-400 block font-semibold">
+                      At A Glance
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-white tracking-tight uppercase">
+                      Quick Profile Overview
+                    </h3>
+                  </div>
                 </div>
 
-                {/* Profile Spec Rows */}
-                <div className="space-y-3">
-                  {profileSpecs.map((item) => {
+                {/* Clean horizontal rows with small icons and subtle separators */}
+                <div className="divide-y divide-slate-800/80">
+                  {profileOverview.map((item) => {
                     const Icon = item.icon;
                     return (
                       <div
                         key={item.label}
-                        className="p-3 rounded-2xl bg-slate-950/60 border border-slate-800/80 flex items-start gap-3 hover:border-cyan-500/30 transition-colors"
+                        className="py-2.5 sm:py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 text-xs sm:text-sm first:pt-0 last:pb-0"
                       >
-                        <div className="p-2 rounded-xl bg-slate-900 text-cyan-400 border border-slate-800 shrink-0">
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <p className="text-[10px] font-mono uppercase tracking-wider text-slate-500">
+                        <div className="flex items-center gap-2.5 min-w-[120px] sm:min-w-[130px] shrink-0 text-slate-400">
+                          <Icon className="w-4 h-4 text-cyan-400 shrink-0" />
+                          <span className="text-xs font-mono uppercase tracking-wider text-slate-400">
                             {item.label}
-                          </p>
-                          {item.isLink ? (
-                            <div className="flex items-center justify-between gap-2 mt-0.5">
-                              <a
-                                href={item.href}
-                                className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 hover:underline truncate block"
-                              >
-                                {item.value}
-                              </a>
-                              <button
-                                type="button"
-                                onClick={handleCopyEmail}
-                                aria-label="Copy email address"
-                                className="p-1 text-slate-400 hover:text-white transition-colors"
-                                title="Copy Email"
-                              >
-                                {copiedEmail ? (
-                                  <Check className="w-3.5 h-3.5 text-emerald-400" />
-                                ) : (
-                                  <Copy className="w-3.5 h-3.5" />
-                                )}
-                              </button>
-                            </div>
-                          ) : (
-                            <p className="text-xs font-semibold text-slate-200 truncate mt-0.5">
-                              {item.value}
-                            </p>
-                          )}
+                          </span>
+                        </div>
+                        <div className="sm:text-right text-slate-200 font-medium break-words">
+                          {item.value}
                         </div>
                       </div>
                     );
@@ -297,86 +165,110 @@ export default function AboutSection() {
                 </div>
               </div>
 
-              {/* Bottom Social & Action Bar */}
-              <div className="mt-6 pt-5 border-t border-slate-800 flex items-center justify-between text-xs">
+              {/* Compact Quick Actions Row to preserve copy email & social links */}
+              <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
                   <a
                     href={personalInfo.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-cyan-500/40 transition-colors"
+                    className="p-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/40 transition-colors"
                     title="Karim's GitHub"
                   >
-                    <GithubIcon className="w-4 h-4" />
+                    <GithubIcon className="w-3.5 h-3.5" />
                   </a>
                   <a
                     href={personalInfo.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-cyan-500/40 transition-colors"
+                    className="p-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/40 transition-colors"
                     title="Karim's LinkedIn"
                   >
-                    <LinkedinIcon className="w-4 h-4" />
+                    <LinkedinIcon className="w-3.5 h-3.5" />
                   </a>
                   <a
                     href={`tel:${personalInfo.phone}`}
-                    className="p-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-emerald-400 hover:border-emerald-500/40 transition-colors"
+                    className="p-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/40 transition-colors"
                     title="Call Karim"
                   >
-                    <Phone className="w-4 h-4" />
+                    <Phone className="w-3.5 h-3.5" />
                   </a>
                 </div>
 
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-cyan-950/60 text-cyan-400 border border-cyan-800/80 hover:bg-cyan-900/60 transition-colors"
-                >
-                  <Mail className="w-3.5 h-3.5" />
-                  <span>Send Message</span>
-                </a>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-cyan-500/40 transition-colors cursor-pointer"
+                    title="Copy Email"
+                  >
+                    {copiedEmail ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
+                        <span className="text-emerald-400">Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5 text-slate-400" />
+                        <span>Copy Email</span>
+                      </>
+                    )}
+                  </button>
+
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/60 text-cyan-400 border border-cyan-800/80 hover:bg-cyan-900/60 transition-colors"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    <span>Email</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* =========================================================================
-            BELOW: 4 ENGINEERING FEATURE & ARCHITECTURE CARDS
-           ========================================================================= */}
-        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {engineeringPillars.map((pillar) => {
-            const Icon = pillar.icon;
-            return (
-              <div
-                key={pillar.title}
-                className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 hover:border-cyan-500/40 backdrop-blur-xs transition-all duration-300 flex flex-col justify-between group shadow-lg"
-              >
-                <div>
-                  <div
-                    className={`w-11 h-11 rounded-xl border flex items-center justify-center mb-4 transition-transform group-hover:scale-105 ${pillar.color}`}
-                  >
-                    <Icon className="w-5 h-5" />
+          {/* =========================================================================
+              RIGHT COLUMN (Approx 45% on desktop: 5 of 11 cols): LARGE PROFILE PHOTO AREA
+             ========================================================================= */}
+          <div className="lg:col-span-5 flex flex-col justify-center">
+            <div className="relative w-full h-full min-h-[440px] sm:min-h-[500px] lg:min-h-full aspect-[3/4] lg:aspect-auto max-w-md lg:max-w-none mx-auto rounded-[28px] overflow-hidden border border-slate-800 hover:border-cyan-500/40 transition-all duration-500 shadow-2xl shadow-cyan-950/30 group bg-slate-900">
+              {/* Ambient Glow Aura */}
+              <div className="absolute -inset-1 bg-gradient-to-t from-cyan-500/10 via-transparent to-transparent rounded-[28px] pointer-events-none z-10" />
+
+              {/* Real Profile Photo (myphoto) */}
+              <Image
+                src="/assets/myphoto.jpeg"
+                alt="Karim Mohamed Abdelaty"
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover object-top sm:object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                priority
+              />
+
+              {/* Subtle Bottom Vignette Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent pointer-events-none" />
+
+              {/* Small Elegant Overlay at bottom */}
+              <div className="absolute bottom-4 inset-x-4 z-20">
+                <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-950/80 backdrop-blur-md border border-white/10 shadow-xl flex items-center justify-between">
+                  <div>
+                    <h4 className="text-sm sm:text-base font-bold text-white tracking-tight leading-snug">
+                      Karim Mohamed Abdelaty
+                    </h4>
+                    <p className="text-xs text-cyan-400 font-medium">
+                      Flutter Developer
+                    </p>
                   </div>
-                  <h4 className="text-base font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
-                    {pillar.title}
-                  </h4>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-4">
-                    {pillar.desc}
-                  </p>
-                </div>
 
-                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800/80">
-                  {pillar.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-950 text-slate-400 border border-slate-800"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  {/* Pulsing Status Badge */}
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-semibold text-emerald-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Available</span>
+                  </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          </div>
         </div>
       </div>
     </section>

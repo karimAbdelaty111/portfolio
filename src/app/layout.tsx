@@ -78,26 +78,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} h-full`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} dark h-full`}>
       <head>
-        {/* Anti-FOUC inline script to immediately set theme before render */}
+        {/* Anti-FOUC inline script: default to dark theme */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               try {
                 var theme = localStorage.getItem('karim-theme');
-                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (theme === 'dark' || (!theme && prefersDark)) {
-                  document.documentElement.classList.add('dark');
-                } else {
+                if (theme === 'light') {
                   document.documentElement.classList.remove('dark');
+                } else {
+                  document.documentElement.classList.add('dark');
                 }
               } catch (_) {}
             `,
           }}
         />
       </head>
-      <body className="min-h-full font-sans antialiased flex flex-col bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+      <body className="min-h-full font-sans antialiased flex flex-col bg-slate-950 text-slate-100 selection:bg-cyan-400 selection:text-slate-950">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

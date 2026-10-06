@@ -67,15 +67,8 @@ export default async function ProjectCaseStudyPage({ params }: Props) {
     notFound();
   }
 
-  // Filter out any image containing 'galary' and sort strictly by numerical index
-  const sortedScreens = (project.realGalleryImages || [])
-    .filter((img) => !img.toLowerCase().includes('galary'))
-    .sort((a, b) => {
-      const numA = extractImageNumber(a);
-      const numB = extractImageNumber(b);
-      if (numA !== numB) return numA - numB;
-      return a.localeCompare(b);
-    });
+  // Gallery images with main gallery as #1
+  const galleryScreens = project.galleryImages || project.realGalleryImages || [project.image];
 
   const otherProjects = projectsData.filter((p) => p.slug !== slug);
 
@@ -151,37 +144,40 @@ export default async function ProjectCaseStudyPage({ params }: Props) {
             )}
           </div>
 
-          {/* Visual Showcase / Screenshot Gallery (Strict Numerical Order) */}
+          {/* Visual Showcase / Screenshot Gallery (Main Visual & Screenshots) */}
           <div className="mb-14 rounded-3xl overflow-hidden border border-slate-800 bg-slate-950 shadow-2xl">
-            {sortedScreens.length > 0 && (
+            {galleryScreens.length > 0 && (
               <div className="p-6 bg-slate-900/90 text-white space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-bold text-white flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-emerald-400" />
-                    <span>Verified Mobile Screenshots in Numerical Order</span>
+                    <span>Project Visuals & Interface Gallery</span>
                   </h3>
                   <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-0.5 rounded-full border border-cyan-800/80">
-                    {sortedScreens.length} Screenshots (1 &rarr; {sortedScreens.length})
+                    {galleryScreens.length} Visuals
                   </span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                  {sortedScreens.map((img, i) => {
-                    const num = extractImageNumber(img);
-                    const label = num !== Number.MAX_SAFE_INTEGER ? `#${num}` : `${i + 1}`;
+                  {galleryScreens.map((img, i) => {
+                    const isHero = i === 0;
                     return (
                       <div
                         key={i}
-                        className="relative h-48 rounded-xl overflow-hidden border border-slate-800 bg-slate-950 group"
+                        className={`relative h-48 rounded-xl overflow-hidden border bg-slate-950 group ${
+                          isHero
+                            ? 'border-cyan-500/50 ring-1 ring-cyan-500/30'
+                            : 'border-slate-800'
+                        }`}
                       >
                         <Image
                           src={img}
-                          alt={`${project.name} screen ${label}`}
+                          alt={`${project.name} visual ${i + 1}`}
                           fill
                           sizes="(max-width: 768px) 50vw, 25vw"
-                          className="object-cover object-top hover:scale-105 transition-transform duration-300"
+                          className="object-contain p-1 hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute bottom-0 inset-x-0 bg-slate-950/85 text-[10px] font-mono font-bold text-cyan-300 text-center py-1">
-                          Screen {label}
+                          {isHero ? 'Primary Visual' : `Screen ${i + 1}`}
                         </div>
                       </div>
                     );

@@ -27,7 +27,7 @@ export default function CvModal({ isOpen, onClose }: CvModalProps) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl transition-all"
+        className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl transition-all"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -65,7 +65,7 @@ export default function CvModal({ isOpen, onClose }: CvModalProps) {
             currently being prepared with updated 4th-year project achievements and DEPI
             scholarship milestones.
           </p>
-          <p className="text-xs bg-slate-50 dark:bg-slate-800/60 p-3 rounded-lg border border-slate-200/80 dark:border-slate-700/60 text-slate-500 dark:text-slate-400">
+          <p className="text-xs bg-slate-950 p-3 rounded-lg border border-slate-800 text-slate-400">
             In the meantime, you can explore the complete verified technical credentials,
             experience, and detailed project case studies directly on this portfolio, or request
             a customized copy directly via email.
