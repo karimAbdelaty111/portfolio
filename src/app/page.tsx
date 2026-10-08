@@ -14,7 +14,7 @@ import BackToTop from '@/components/BackToTop';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-cyan-400 selection:text-slate-950 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-cyan-400 selection:text-slate-950 transition-colors duration-300">
       <Navbar />
 
       <main className="flex-1">

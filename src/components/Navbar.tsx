@@ -47,7 +47,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-slate-950/90 backdrop-blur-md shadow-xs border-b border-slate-800/80 py-3'
+          ? 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-xs border-b border-slate-200 dark:border-slate-800/80 py-3'
           : 'bg-transparent py-5'
       }`}
     >
@@ -148,7 +148,7 @@ export default function Navbar() {
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="bg-slate-950 border-b border-slate-800 px-6 py-6 shadow-2xl space-y-4 max-h-[calc(100vh-65px)] overflow-y-auto"
+            className="bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 px-6 py-6 shadow-2xl space-y-4 max-h-[calc(100vh-65px)] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col space-y-1">
@@ -157,7 +157,7 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-slate-900 hover:text-cyan-400 transition-colors"
+                  className="px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
                 >
                   {item.name}
                 </Link>

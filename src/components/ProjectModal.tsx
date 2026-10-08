@@ -51,14 +51,11 @@ export default function ProjectModal({
     setLightboxOpen(false);
   }, [project?.id]);
 
-  // Gallery images array (guarantees main gallery is #1)
+  // Dedicated Project Gallery images (strictly Gallery assets)
   const gallery = useMemo(() => {
     if (!project) return [];
     if (project.galleryImages && project.galleryImages.length > 0) {
       return project.galleryImages;
-    }
-    if (project.realGalleryImages && project.realGalleryImages.length > 0) {
-      return project.realGalleryImages;
     }
     return project.image ? [project.image] : [];
   }, [project]);
@@ -123,7 +120,7 @@ export default function ProjectModal({
       aria-labelledby="project-details-title"
     >
       <div
-        className="relative w-full max-w-4xl lg:max-w-5xl bg-slate-900 border border-slate-800 rounded-2xl sm:rounded-3xl shadow-2xl shadow-cyan-950/30 overflow-hidden my-auto max-h-[92vh] flex flex-col"
+        className="relative w-full max-w-4xl lg:max-w-5xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl shadow-2xl shadow-cyan-950/30 overflow-hidden my-auto max-h-[92vh] flex flex-col transition-colors duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         {/* =====================================================================
@@ -132,30 +129,30 @@ export default function ProjectModal({
             - 01 Overview | 02 Gallery | 03 Details
             - Close (X)
            ===================================================================== */}
-        <header className="flex flex-wrap items-center justify-between gap-3 p-3.5 sm:p-5 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md shrink-0">
+        <header className="flex flex-wrap items-center justify-between gap-3 p-3.5 sm:p-5 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-950/80 backdrop-blur-md shrink-0">
           {/* Back button */}
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-300 hover:text-cyan-400 transition-colors px-2.5 py-1.5 rounded-xl hover:bg-slate-800/80 cursor-pointer"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors px-2.5 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 cursor-pointer"
             aria-label="Back to Projects"
           >
-            <ArrowLeft className="w-4 h-4 text-cyan-400" />
+            <ArrowLeft className="w-4 h-4 text-cyan-500" />
             <span>Back to Projects</span>
           </button>
 
           {/* 3 Navigable Tabs */}
           <nav
             aria-label="Project details sections"
-            className="flex items-center gap-1 sm:gap-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800"
+            className="flex items-center gap-1 sm:gap-2 bg-slate-100 dark:bg-slate-900/90 p-1 rounded-xl border border-slate-200 dark:border-slate-800"
           >
             <button
               type="button"
               onClick={() => setActiveTab('overview')}
               className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                 activeTab === 'overview'
-                  ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 shadow-xs'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/40 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <span className="font-mono text-[10px] sm:text-xs opacity-75">01</span>
@@ -167,14 +164,14 @@ export default function ProjectModal({
               onClick={() => setActiveTab('gallery')}
               className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                 activeTab === 'gallery'
-                  ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 shadow-xs'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/40 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <span className="font-mono text-[10px] sm:text-xs opacity-75">02</span>
               <span>Gallery</span>
               {gallery.length > 0 && (
-                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-slate-800 text-slate-300">
+                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                   {gallery.length}
                 </span>
               )}
@@ -185,8 +182,8 @@ export default function ProjectModal({
               onClick={() => setActiveTab('details')}
               className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                 activeTab === 'details'
-                  ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 shadow-xs'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/40 shadow-xs'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <span className="font-mono text-[10px] sm:text-xs opacity-75">03</span>
@@ -202,7 +199,7 @@ export default function ProjectModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View on GitHub"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-200 hover:text-cyan-400 border border-slate-700 hover:border-cyan-500/40 transition-colors"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 border border-slate-200 dark:border-slate-700 hover:border-cyan-500/40 transition-colors shadow-xs"
                 title="View on GitHub"
               >
                 <GithubIcon className="w-3.5 h-3.5" />
@@ -214,7 +211,7 @@ export default function ProjectModal({
               type="button"
               onClick={onClose}
               aria-label="Close modal"
-              className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+              className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -295,6 +292,40 @@ export default function ProjectModal({
                   ))}
                 </div>
               </div>
+
+              {/* Mobile Project Screenshots Showcase (Protected numbered mobile screens) */}
+              {project.realGalleryImages && project.realGalleryImages.length > 0 && (
+                <div className="space-y-3 pt-2">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold flex items-center gap-2">
+                      <Layers className="w-4 h-4 text-cyan-400" />
+                      <span>Mobile Project Showcase ({project.realGalleryImages.length} Screens)</span>
+                    </h4>
+                    <span className="text-[11px] font-mono text-slate-400">
+                      Mobile & System Screens
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    {project.realGalleryImages.map((img, idx) => (
+                      <div
+                        key={idx}
+                        className="relative h-44 sm:h-52 rounded-xl overflow-hidden bg-slate-950 border border-slate-800 hover:border-cyan-500/50 transition-all group"
+                      >
+                        <Image
+                          src={img}
+                          alt={`${project.name} mobile screenshot ${idx + 1}`}
+                          fill
+                          className="object-contain p-1.5 group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 768px) 50vw, 25vw"
+                        />
+                        <div className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-slate-950/85 text-[10px] font-mono text-slate-300 border border-slate-800">
+                          {idx + 1}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Quick Navigation to Part 2 / Part 3 & GitHub CTA */}
               <div className="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800">

@@ -38,14 +38,15 @@ export interface SkillCategory {
 export interface ExperienceItem {
   id: string;
   title: string;
-  companyOrProgram: string;
+  companyOrProgram?: string;
   location: string;
   period: string;
   status?: string;
   type: 'project' | 'training';
   description: string;
   highlights: string[];
-  technologies: string[];
+  highlightsLabel?: string;
+  technologies?: string[];
 }
 
 export interface EducationItem {
@@ -78,4 +79,18 @@ export interface CertificationItem {
   dateOrPeriod: string;
   description: string;
   credentialUrl?: string;
+  image?: string;
 }
+
+export interface ProjectGalleryGroup {
+  id: string;
+  projectId: string;
+  projectSlug: string;
+  projectName: string;
+  galleryName: string;
+  category: string;
+  tagline: string;
+  coverImage: string;
+  images: string[];
+}
+

@@ -105,7 +105,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-20 lg:pt-36 lg:pb-32 overflow-hidden bg-slate-950 text-slate-100 transition-colors duration-300">
+    <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-20 lg:pt-36 lg:pb-32 overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/10 via-emerald-500/10 to-teal-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute top-20 right-10 w-72 h-72 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -116,14 +116,14 @@ export default function Hero() {
           <div className="lg:col-span-7 flex flex-col space-y-6 text-center lg:text-left">
             {/* Top Status Pill Badge */}
             <div className="inline-flex items-center justify-center lg:justify-start">
-              <div className="inline-flex flex-wrap items-center justify-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-cyan-950/60 border border-cyan-800/60 text-cyan-300 shadow-sm backdrop-blur-sm max-w-full">
+              <div className="inline-flex flex-wrap items-center justify-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium bg-cyan-100/80 dark:bg-cyan-950/60 border border-cyan-300 dark:border-cyan-800/60 text-cyan-800 dark:text-cyan-300 shadow-xs backdrop-blur-sm max-w-full">
                 <span className="flex h-2 w-2 relative shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
                 <span className="text-center">Software Engineer Student | Flutter Developer</span>
-                <span className="text-slate-700 hidden xs:inline">•</span>
-                <span className="text-slate-400 font-normal hidden xs:inline">
+                <span className="text-slate-300 dark:text-slate-700 hidden xs:inline">•</span>
+                <span className="text-slate-500 dark:text-slate-400 font-normal hidden xs:inline">
                   Cairo, Egypt
                 </span>
               </div>
@@ -131,19 +131,19 @@ export default function Hero() {
 
             {/* Main Headline */}
             <div className="space-y-3">
-              <h1 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
+              <h1 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
                 Hi, I&apos;m{' '}
-                <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 dark:from-cyan-400 dark:via-teal-300 dark:to-emerald-400 bg-clip-text text-transparent">
                   {personalInfo.name}
                 </span>
               </h1>
-              <p className="text-base sm:text-lg xl:text-xl font-semibold text-slate-200">
+              <p className="text-base sm:text-lg xl:text-xl font-semibold text-slate-700 dark:text-slate-200">
                 Architecting Scalable Mobile Applications with Clean Code & Algorithms.
               </p>
             </div>
 
             {/* Introduction paragraph */}
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Computer Science student at <strong>Ain Shams University</strong> and aspiring Software Engineer specializing in <strong>Flutter development</strong>. Passionate about building high-performance cross-platform applications with BLoC, RESTful APIs, and clean architecture.
             </p>
 
@@ -160,84 +160,84 @@ export default function Hero() {
 
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 sm:py-3.5 text-sm font-semibold text-slate-200 bg-slate-900/90 hover:bg-slate-800 rounded-xl border border-slate-800 shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus:ring-2 focus:ring-cyan-500 focus:outline-hidden touch-manipulation cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 sm:px-5 py-3 sm:py-3.5 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900/90 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-800 shadow-xs hover:-translate-y-0.5 transition-all duration-200 focus:ring-2 focus:ring-cyan-500 focus:outline-hidden touch-manipulation cursor-pointer"
               >
-                <Mail className="w-4 h-4 text-emerald-400" />
+                <Mail className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
                 <span>Get In Touch</span>
               </Link>
             </div>
 
             {/* Social channels row */}
             <div className="flex items-center justify-center lg:justify-start gap-4 pt-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                 Contact:
               </span>
               <a
                 href={personalInfo.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-cyan-400 transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
                 aria-label="GitHub Profile"
               >
                 <GithubIcon className="w-4 h-4" />
                 <span>GitHub</span>
               </a>
-              <span className="text-slate-700">•</span>
+              <span className="text-slate-300 dark:text-slate-700">•</span>
               <a
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-cyan-400 transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
                 aria-label="LinkedIn Profile"
               >
                 <LinkedinIcon className="w-4 h-4" />
                 <span>LinkedIn</span>
               </a>
-              <span className="text-slate-700">•</span>
+              <span className="text-slate-300 dark:text-slate-700">•</span>
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-emerald-400 transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                 aria-label="Email Karim"
               >
-                <Mail className="w-4 h-4 text-emerald-400" />
+                <Mail className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
                 <span>Email</span>
               </a>
             </div>
 
             {/* 4 Metric / Key Stat Cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-slate-800/80">
-              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 shadow-xs">
-                <div className="text-lg sm:text-xl font-bold text-white font-mono">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-slate-200 dark:border-slate-800/80">
+              <div className="p-3 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs card-hover-effect">
+                <div className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white font-mono">
                   4th Year
                 </div>
-                <div className="text-[11px] font-medium text-slate-400 leading-tight mt-0.5">
+                <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
                   Computer Science
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 shadow-xs">
-                <div className="text-lg sm:text-xl font-bold text-white font-mono">
+              <div className="p-3 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs card-hover-effect">
+                <div className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white font-mono">
                   4+ Projects
                 </div>
-                <div className="text-[11px] font-medium text-slate-400 leading-tight mt-0.5">
+                <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
                   Mobile Solutions
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 shadow-xs">
-                <div className="text-lg sm:text-xl font-bold text-white font-mono">
+              <div className="p-3 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs card-hover-effect">
+                <div className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white font-mono">
                   DEPI R5
                 </div>
-                <div className="text-[11px] font-medium text-slate-400 leading-tight mt-0.5">
+                <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
                   MCIT Scholarship
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 shadow-xs">
-                <div className="text-lg sm:text-xl font-bold text-white font-mono">
+              <div className="p-3 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-xs card-hover-effect">
+                <div className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white font-mono">
                   Clean Arch
                 </div>
-                <div className="text-[11px] font-medium text-slate-400 leading-tight mt-0.5">
+                <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
                   BLoC &amp; Modular
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function Hero() {
           {/* Right Column: Mobile App Showcase Mockup */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
             {/* Interactive Switcher Tab Bar: Only the 2 Real Applications */}
-            <div className="flex items-center gap-1.5 p-1.5 bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-800 mb-4 shadow-sm">
+            <div className="flex items-center gap-1.5 p-1.5 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-800 mb-4 shadow-sm">
               <button
                 type="button"
                 onClick={() => handleSelectApp('ofood')}

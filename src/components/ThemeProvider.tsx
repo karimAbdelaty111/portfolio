@@ -35,17 +35,39 @@ function getServerSnapshot(): Theme {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  const [, setTrigger] = useState(0);
+  const [theme, setThemeState] = useState<Theme>('dark');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-  }, [theme]);
+    setMounted(true);
+    try {
+      const saved = localStorage.getItem('karim-theme') as Theme | null;
+      if (saved === 'light' || saved === 'dark') {
+        setThemeState(saved);
+        document.documentElement.classList.toggle('dark', saved === 'dark');
+      } else {
+        document.documentElement.classList.add('dark');
+        setThemeState('dark');
+      }
+    } catch (_) {}
+
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'karim-theme' && (e.newValue === 'light' || e.newValue === 'dark')) {
+        setThemeState(e.newValue);
+        document.documentElement.classList.toggle('dark', e.newValue === 'dark');
+      }
+    };
+
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
 
   const setTheme = (newTheme: Theme) => {
-    localStorage.setItem('karim-theme', newTheme);
+    setThemeState(newTheme);
+    try {
+      localStorage.setItem('karim-theme', newTheme);
+    } catch (_) {}
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
-    setTrigger((prev) => prev + 1);
   };
 
   const toggleTheme = () => {

@@ -96,7 +96,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full font-sans antialiased flex flex-col bg-slate-950 text-slate-100 selection:bg-cyan-400 selection:text-slate-950">
+      <body className="min-h-full font-sans antialiased flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-cyan-400 selection:text-slate-950 transition-colors duration-300">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
